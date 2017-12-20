@@ -123,3 +123,16 @@ C:\Users\Patryk\Desktop\tsst_client\tsst_client\tsst_client\obj\Debug\tsst_clien
 C:\Users\Patryk\Desktop\tsst_client\tsst_client\tsst_client\obj\Debug\tsst_client.csproj.CoreCompileInputs.cache
 C:\Users\Patryk\Desktop\tsst_client\tsst_client\tsst_client\obj\Debug\tsst_client.exe
 C:\Users\Patryk\Desktop\tsst_client\tsst_client\tsst_client\obj\Debug\tsst_client.pdb
+C:\Users\Patryk\Documents\GitHub\ClientNode\tsst_client\bin\Debug\tsst_client.exe.config
+C:\Users\Patryk\Documents\GitHub\ClientNode\tsst_client\bin\Debug\tsst_client.exe
+C:\Users\Patryk\Documents\GitHub\ClientNode\tsst_client\bin\Debug\tsst_client.pdb
+C:\Users\Patryk\Documents\GitHub\ClientNode\tsst_client\bin\Debug\CustomSocket.exe
+C:\Users\Patryk\Documents\GitHub\ClientNode\tsst_client\bin\Debug\CustomSocket.pdb
+C:\Users\Patryk\Documents\GitHub\ClientNode\tsst_client\bin\Debug\CustomSocket.exe.config
+C:\Users\Patryk\Documents\GitHub\ClientNode\tsst_client\obj\Debug\tsst_client.csprojResolveAssemblyReference.cache
+C:\Users\Patryk\Documents\GitHub\ClientNode\tsst_client\obj\Debug\tsst_client.Form1.resources
+C:\Users\Patryk\Documents\GitHub\ClientNode\tsst_client\obj\Debug\tsst_client.Properties.Resources.resources
+C:\Users\Patryk\Documents\GitHub\ClientNode\tsst_client\obj\Debug\tsst_client.csproj.GenerateResource.Cache
+C:\Users\Patryk\Documents\GitHub\ClientNode\tsst_client\obj\Debug\tsst_client.csproj.CoreCompileInputs.cache
+C:\Users\Patryk\Documents\GitHub\ClientNode\tsst_client\obj\Debug\tsst_client.exe
+C:\Users\Patryk\Documents\GitHub\ClientNode\tsst_client\obj\Debug\tsst_client.pdb
