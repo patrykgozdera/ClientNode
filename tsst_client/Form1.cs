@@ -36,8 +36,14 @@ namespace tsst_client
             InitializeComponent();
             Text = CustomSocket.Config.getProperty("client_name") + " - Client Node";
             outCounter = 0;
-            inCounter = 0;            
+            inCounter = 0;
             CalledPartyCC.Init();
+            Connect();
+            if (!backgroundWorker1.IsBusy)
+            {
+                backgroundWorker1.RunWorkerAsync();
+            }
+
         }
 
         private void Connect()
@@ -53,19 +59,19 @@ namespace tsst_client
 
         private void button1_Click(object sender, EventArgs e)
         {
-           // if(!null)  
-            button1.Enabled = false;
-            //Connect();
-            //if (!backgroundWorker1.IsBusy)
-           // {
-           //     backgroundWorker1.RunWorkerAsync();
-           // }
-            
+            /*button1.Enabled = false;
+            Connect();
+            if (!backgroundWorker1.IsBusy)
+            {
+                backgroundWorker1.RunWorkerAsync();
+            }
+            */
+            CPCC.InitSendingThread(CPCC.CALL_REQUEST, CustomSocket.Config.getProperty("client_name"), destinationTextBox.Text, Int32.Parse(textBox_capacity.Text));
+
         }
 
         private void send_Click(object sender, EventArgs e)
         {
-           //CPCC.Init();
             ProcessUIOrder();
             sendingDelay = Int32.Parse(delay_tb.Text);
         }
@@ -73,7 +79,7 @@ namespace tsst_client
         private void ProcessUIOrder()
         {
             Thread thread;
-            thread = new Thread(() => CPCC.SendMessage(CPCC.CALL_REQUEST, CustomSocket.Config.getProperty("client_name"), destinationTextBox.Text, Int32.Parse(textBox_capacity.Text)));//sendPackets());
+            thread = new Thread(() => sendPackets());
             thread.Start();
         }
 
@@ -160,7 +166,7 @@ namespace tsst_client
             {
                 ProcessIncomingData();
             }
-        } 
+        }
 
         private int ReceiveDataSize()
         {
@@ -239,8 +245,7 @@ namespace tsst_client
         {
             try
             {
-                CalledPartyCC.Init();
-                //Listen();
+                Listen();
             }
             catch (IOException)
             {
