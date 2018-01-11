@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Serialization;
+using CustomSocket;
 
 namespace tsst_client
 {
@@ -117,7 +118,7 @@ namespace tsst_client
         {
             string random_meassage;
             random_meassage = message_tb.Text + RandomString();
-            Packet packet = new Packet(random_meassage, destinationTextBox.Text, "", outPort, 0, GetTimeStamp(), "I1");
+            Packet packet = new Packet(random_meassage, Config.getProperty(destinationTextBox.Text), "", outPort, 0, GetTimeStamp(), "I1");
             return packet;
         }
 
