@@ -13,13 +13,14 @@ namespace tsst_client
     {
         private static MessageParameters messageParameters;
         private static CSocket csocket;
-        public const String CALL_REQUEST="callRequest";         
+        public const String CALL_REQUEST = "callRequest";
+        public const String CALL_TEARDOWN = "callTeardown";
 
         public static void Init()
         {
             string ipAdd = Config.getProperty("IPaddress");
-            IPAddress ipAddress = IPAddress.Parse(ipAdd);            
-            csocket = new CSocket(ipAddress, Config.getIntegerProperty("sendPort"), CSocket.CONNECT_FUNCTION);            
+            IPAddress ipAddress = IPAddress.Parse(ipAdd);
+            csocket = new CSocket(ipAddress, Config.getIntegerProperty("sendPort"), CSocket.CONNECT_FUNCTION);
         }
 
         public static Thread InitSendingThread(string mName, string uName, string dName, int c)
@@ -32,10 +33,10 @@ namespace tsst_client
 
         public static void SendMessage(string messageName, string userName, string destinationUserName, int capacity)
         {
-            messageParameters = new MessageParameters(userName, destinationUserName, capacity);              
-            Init();            
+            messageParameters = new MessageParameters(userName, destinationUserName, capacity);
+            Init();
             csocket.SendObject(messageName, messageParameters);
         }
-        
+
     }
 }

@@ -67,8 +67,13 @@ namespace tsst_client
                 backgroundWorker1.RunWorkerAsync();
             }
             */
-            CPCC.InitSendingThread(CPCC.CALL_REQUEST, CustomSocket.Config.getProperty("client_name"), destinationTextBox.Text, Int32.Parse(textBox_capacity.Text));
+            CPCC.InitSendingThread(CPCC.CALL_REQUEST, Config.getProperty("client_name"), destinationTextBox.Text, Int32.Parse(textBox_capacity.Text));
 
+        }
+
+        private void deallocate_b_Click(object sender, EventArgs e)
+        {
+            CPCC.InitSendingThread(CPCC.CALL_TEARDOWN, Config.getProperty("client_name"), destinationTextBox.Text, Int32.Parse(textBox_capacity.Text));
         }
 
         private void send_Click(object sender, EventArgs e)
@@ -286,5 +291,6 @@ namespace tsst_client
             DateTime dateTime = DateTime.Now;
             return dateTime.ToString("HH:mm:ss.ff");
         }
+
     }
 }

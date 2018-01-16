@@ -45,6 +45,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.textBox_capacity = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.deallocate_b = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // message_tb
@@ -65,11 +66,11 @@
             // 
             // send
             // 
-            this.send.Location = new System.Drawing.Point(412, 38);
+            this.send.Location = new System.Drawing.Point(319, 78);
             this.send.Name = "send";
             this.send.Size = new System.Drawing.Size(90, 34);
             this.send.TabIndex = 4;
-            this.send.Text = "SEND PACKET(S)";
+            this.send.Text = "SEND MESSAGE(S)";
             this.send.UseVisualStyleBackColor = true;
             this.send.Click += new System.EventHandler(this.send_Click);
             // 
@@ -152,7 +153,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(412, 74);
+            this.button1.Location = new System.Drawing.Point(412, 40);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(90, 35);
             this.button1.TabIndex = 18;
@@ -162,7 +163,7 @@
             // 
             // destinationTextBox
             // 
-            this.destinationTextBox.Location = new System.Drawing.Point(319, 55);
+            this.destinationTextBox.Location = new System.Drawing.Point(319, 40);
             this.destinationTextBox.Name = "destinationTextBox";
             this.destinationTextBox.Size = new System.Drawing.Size(72, 20);
             this.destinationTextBox.TabIndex = 19;
@@ -171,7 +172,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(316, 78);
+            this.label8.Location = new System.Drawing.Point(316, 62);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(60, 13);
             this.label8.TabIndex = 20;
@@ -194,11 +195,22 @@
             this.label6.TabIndex = 22;
             this.label6.Text = "Capacity (Mb/s)";
             // 
+            // deallocate_b
+            // 
+            this.deallocate_b.Location = new System.Drawing.Point(412, 77);
+            this.deallocate_b.Name = "deallocate_b";
+            this.deallocate_b.Size = new System.Drawing.Size(90, 35);
+            this.deallocate_b.TabIndex = 23;
+            this.deallocate_b.Text = "DEALLOCATE";
+            this.deallocate_b.UseVisualStyleBackColor = true;
+            this.deallocate_b.Click += new System.EventHandler(this.deallocate_b_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(514, 411);
+            this.Controls.Add(this.deallocate_b);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.textBox_capacity);
             this.Controls.Add(this.label8);
@@ -241,6 +253,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox textBox_capacity;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button deallocate_b;
     }
 }
 
