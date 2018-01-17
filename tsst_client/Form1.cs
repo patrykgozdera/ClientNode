@@ -31,11 +31,16 @@ namespace tsst_client
         private int inCounter;
         private int sendingDelay;
 
+        public static ListBox sendRefer = null;
+        public static ListBox receiveRefer = null;
+
 
         public Form1()
         {
             InitializeComponent();
-            Text = CustomSocket.Config.getProperty("client_name") + " - Client Node";
+            Text = Config.getProperty("client_name") + " - Client Node";
+            sendRefer = logs_list;
+            receiveRefer = receive_logs_list;
             outCounter = 0;
             inCounter = 0;
             CalledPartyCC.Init();
@@ -44,14 +49,13 @@ namespace tsst_client
             {
                 backgroundWorker1.RunWorkerAsync();
             }
-
         }
 
         private void Connect()
         {
             output_socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             IPAddress ipAdd = IPAddress.Parse("127.0.0.1");
-            outPort = CustomSocket.Config.getIntegerProperty("output_port");
+            outPort = Config.getIntegerProperty("output_port");
             //outPort = Int32.Parse(textBox1.Text);
             IPEndPoint remoteEP = new IPEndPoint(ipAdd, outPort);
             output_socket.Connect(remoteEP);
@@ -67,6 +71,7 @@ namespace tsst_client
                 backgroundWorker1.RunWorkerAsync();
             }
             */
+            CPCC.PrintLogs(CPCC.CALL_REQUEST);
             CPCC.InitSendingThread(CPCC.CALL_REQUEST, Config.getProperty("client_name"), destinationTextBox.Text, Int32.Parse(textBox_capacity.Text));
 
         }
@@ -150,6 +155,16 @@ namespace tsst_client
             }));
         }
 
+        public void UpdateListBox(String function, int counter)
+        {
+            ListBox updatingListBox = GetProperListBox(function); ;
+            updatingListBox.Invoke(new Action(delegate ()
+            {
+                updatingListBox.Items.Add("elo");
+                updatingListBox.SelectedIndex = updatingListBox.Items.Count - 1;
+            }));
+        }
+
         private ListBox GetProperListBox(String function)
         {
             if (function.Equals(SEND_FUNCTION))
@@ -158,6 +173,18 @@ namespace tsst_client
                 return receive_logs_list;
             else
                 return null;
+        }
+
+        public void PrintLogs(int nb, String function)
+        {
+            if(nb == 1 && function.Equals("e"))
+            {
+                receive_logs_list.Invoke(new Action(delegate ()
+                {
+                    receive_logs_list.Items.Add("elo");
+                    receive_logs_list.SelectedIndex = receive_logs_list.Items.Count - 1;
+                }));
+            } 
         }
 
         private void Listen()

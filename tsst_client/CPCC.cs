@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using CustomSocket;
 using System.Net;
 using System.Threading;
+using System.Windows.Forms;
+using System.Drawing;
 
 namespace tsst_client
 {
@@ -38,5 +40,30 @@ namespace tsst_client
             csocket.SendObject(messageName, messageParameters);
         }
 
+        public static void PrintLogs(String function)
+        {
+            if (function.Equals(CALL_REQUEST))
+                Print(Form1.sendRefer, "Sent CALL REQUEST to NCC");
+            else if (function.Equals(CalledPartyCC.CALL_INDICATION))
+            {
+                Print(Form1.receiveRefer, "Received CALL INDICATION from NCC");
+                Print(Form1.sendRefer, "Sent CALL CONFIRMED to NCC");
+            }    
+        }
+
+        private static void Print(ListBox listBox, String log)
+        {
+            listBox.Invoke(new Action(delegate ()
+            {
+                listBox.Items.Add(GetCurrentTimeStamp() + " | " + log);
+                listBox.SelectedIndex = listBox.Items.Count - 1;
+            }));
+        }
+
+        private static String GetCurrentTimeStamp()
+        {
+            DateTime dateTime = DateTime.Now;
+            return dateTime.ToString("HH:mm:ss.ff");
+        }
     }
 }

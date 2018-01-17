@@ -23,7 +23,10 @@ namespace tsst_client
         private static int capacity;
 
         private static CSocket csocket;
-        private static MessageParameters messageParameters;
+        private static MessageParameters messageParameters;       
+
+      
+
         public static void Init()
         {
             InitListeningCustomSocket();
@@ -76,12 +79,12 @@ namespace tsst_client
 
             if (parameter.Equals(CALL_INDICATION))
             {
+                CPCC.PrintLogs(CALL_INDICATION);
                 CPCC.SendMessage(CALL_CONFIRMED_CPCC, messageParameters.getFirstParameter(), messageParameters.getSecondParameter(), messageParameters.getCapacity());
             }
             else if (parameter.Equals(CALL_COORDINATION))
-            {
+            {              
                 CPCC.SendMessage(CALL_CONFIRMED_CPCC, messageParameters.getFirstParameter(), messageParameters.getSecondParameter(), messageParameters.getCapacity());
-                Console.WriteLine("eloszka");
             }
         }
     }
