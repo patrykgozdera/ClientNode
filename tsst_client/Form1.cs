@@ -128,7 +128,7 @@ namespace tsst_client
         {
             string random_meassage;
             random_meassage = message_tb.Text + RandomString();
-            Packet packet = new Packet(random_meassage, Config.getProperty(destinationTextBox.Text), "", outPort, 0, GetTimeStamp(), "I1");
+            Packet packet = new Packet(random_meassage, Config.getProperty(destinationTextBox.Text), Config.getProperty("client_name"), outPort, 0, GetTimeStamp(), "I1");
             return packet;
         }
 
@@ -148,11 +148,22 @@ namespace tsst_client
         private void updateUI(String function, int counter, Packet packet)
         {
             ListBox updatingListBox = GetProperListBox(function);
-            updatingListBox.Invoke(new Action(delegate ()
+            if (function.Equals(SEND_FUNCTION))
             {
-                updatingListBox.Items.Add(counter + "| " + packet.s + " | " + packet.timestamp);
-                updatingListBox.SelectedIndex = updatingListBox.Items.Count - 1;
-            }));
+                updatingListBox.Invoke(new Action(delegate ()
+                {
+                    updatingListBox.Items.Add(counter + " | " + "To " + destinationTextBox.Text + " | " + packet.s + " | " + packet.timestamp);
+                    updatingListBox.SelectedIndex = updatingListBox.Items.Count - 1;
+                }));
+            }
+            else if (function.Equals(RECEIVE_FUNCTION))
+            {
+                updatingListBox.Invoke(new Action(delegate ()
+                {
+                    updatingListBox.Items.Add(counter + " | " + "From " + packet.sourceAddress + " | " + packet.s + " | " + packet.timestamp);
+                    updatingListBox.SelectedIndex = updatingListBox.Items.Count - 1;
+                }));
+            }
         }
 
         public void UpdateListBox(String function, int counter)
@@ -173,18 +184,6 @@ namespace tsst_client
                 return receive_logs_list;
             else
                 return null;
-        }
-
-        public void PrintLogs(int nb, String function)
-        {
-            if(nb == 1 && function.Equals("e"))
-            {
-                receive_logs_list.Invoke(new Action(delegate ()
-                {
-                    receive_logs_list.Items.Add("elo");
-                    receive_logs_list.SelectedIndex = receive_logs_list.Items.Count - 1;
-                }));
-            } 
         }
 
         private void Listen()
