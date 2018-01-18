@@ -49,6 +49,19 @@ namespace tsst_client
                 Print(Form1.receiveRefer, "Received CALL INDICATION from NCC");
                 Print(Form1.sendRefer, "Sent CALL CONFIRMED to NCC");
             }    
+            else if (function.Equals(CalledPartyCC.CALL_TEARDOWN_CPCC))
+            {
+                Print(Form1.receiveRefer, "Received CALL TEARDOWN from NCC");
+                Print(Form1.sendRefer, "Accepted the deallocation");
+            }
+            else if(function.Equals(CalledPartyCC.CALL_CONFIRMED_CPCC))
+            {
+                Print(Form1.receiveRefer, "Received CALL CONFIRMED from NCC");
+            }
+            else if (function.Equals(CalledPartyCC.CALL_REJECTED_CPCC))
+            {
+                Print(Form1.receiveRefer, "Received CALL REJECTED from NCC");
+            }
         }
 
         private static void Print(ListBox listBox, String log)

@@ -17,6 +17,10 @@ namespace tsst_client
         public const string CALL_COORDINATION = "callCoordination";
         public const string CALL_INDICATION = "callIndication";
         public const string CALL_CONFIRMED_CPCC = "callConfirmedCPCC";
+        public const String CALL_REJECTED_CPCC = "callRejectedCPCC";
+        public const String ACK_FUNCTION = "ackFunction";
+        public const String NACK_FUNCTION = "nackFunction";
+        public const string CALL_TEARDOWN_CPCC = "callTeardownCPCC";
 
         private static string userAddress_1;
         private static string userAddress_2;
@@ -82,9 +86,18 @@ namespace tsst_client
                 CPCC.PrintLogs(CALL_INDICATION);
                 CPCC.SendMessage(CALL_CONFIRMED_CPCC, messageParameters.getFirstParameter(), messageParameters.getSecondParameter(), messageParameters.getCapacity());
             }
-            else if (parameter.Equals(CALL_COORDINATION))
-            {              
-                CPCC.SendMessage(CALL_CONFIRMED_CPCC, messageParameters.getFirstParameter(), messageParameters.getSecondParameter(), messageParameters.getCapacity());
+            else if(parameter.Equals(CALL_TEARDOWN_CPCC))
+            {
+                CPCC.PrintLogs(CALL_TEARDOWN_CPCC);
+                CPCC.SendMessage(CALL_TEARDOWN_CPCC, messageParameters.getFirstParameter(), messageParameters.getSecondParameter(), messageParameters.getCapacity());
+            }
+            else if (parameter.Equals(CALL_CONFIRMED_CPCC))
+            {
+                CPCC.PrintLogs(CALL_CONFIRMED_CPCC);
+            }
+            else if (parameter.Equals(CALL_REJECTED_CPCC))
+            {
+                CPCC.PrintLogs(CALL_REJECTED_CPCC);
             }
         }
     }
