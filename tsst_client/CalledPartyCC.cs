@@ -21,6 +21,7 @@ namespace tsst_client
         public const String ACK_FUNCTION = "ackFunction";
         public const String NACK_FUNCTION = "nackFunction";
         public const string CALL_TEARDOWN_CPCC = "callTeardownCPCC";
+        public const String CALL_TEARDOWN_SEND = "callTearDownSend";
 
         private static string userAddress_1;
         private static string userAddress_2;

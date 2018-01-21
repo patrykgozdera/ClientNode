@@ -62,6 +62,10 @@ namespace tsst_client
             {
                 Print(Form1.receiveRefer, "Received CALL REJECTED from NCC");
             }
+            else if (function.Equals(CalledPartyCC.CALL_TEARDOWN_SEND))
+            {
+                Print(Form1.sendRefer, "Sent CALL TEARDOWN to NCC");
+            }
         }
 
         private static void Print(ListBox listBox, String log)

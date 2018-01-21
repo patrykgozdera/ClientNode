@@ -78,6 +78,7 @@ namespace tsst_client
 
         private void deallocate_b_Click(object sender, EventArgs e)
         {
+            CPCC.PrintLogs(CalledPartyCC.CALL_TEARDOWN_SEND);
             CPCC.InitSendingThread(CPCC.CALL_TEARDOWN, Config.getProperty("client_name"), destinationTextBox.Text, Int32.Parse(textBox_capacity.Text));
         }
 
